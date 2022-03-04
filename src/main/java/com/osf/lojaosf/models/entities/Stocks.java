@@ -1,4 +1,4 @@
-package com.osf.lojaosf.models;
+package com.osf.lojaosf.models.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;

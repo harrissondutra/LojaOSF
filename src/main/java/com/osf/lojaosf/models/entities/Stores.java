@@ -1,4 +1,4 @@
-package com.osf.lojaosf.models;
+package com.osf.lojaosf.models.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -36,5 +36,37 @@ public class Stores extends Address{
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Stocks getStocks() {
+        return stocks;
+    }
+
+    public void setStocks(Stocks stocks) {
+        this.stocks = stocks;
+    }
+
+    public List<Products> getProductsList() {
+        return productsList;
+    }
+
+    public void setProductsList(List<Products> productsList) {
+        this.productsList = productsList;
     }
 }

@@ -1,4 +1,4 @@
-package com.osf.lojaosf.models;
+package com.osf.lojaosf.models.entities;
 
 public class Address {
 

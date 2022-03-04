@@ -1,6 +1,4 @@
-package com.osf.lojaosf.models;
-
-import jdk.jfr.Category;
+package com.osf.lojaosf.models.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,7 +9,6 @@ import java.util.List;
 public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Integer id;
 
     private String name;
