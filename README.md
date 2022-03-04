@@ -1,2 +1,2 @@
 # LojaOSF
-Loja OSF para a OSF Academy
+store created for OSF Academy.
