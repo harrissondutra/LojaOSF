@@ -1,11 +1,11 @@
 package com.osf.lojaosf.models.repositories;
 
 
+import com.osf.lojaosf.models.entities.Brands;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.osf.lojaosf.models.entities.Brands;
 
 public interface BrandsRepository extends PagingAndSortingRepository<Brands, Integer> {
 
