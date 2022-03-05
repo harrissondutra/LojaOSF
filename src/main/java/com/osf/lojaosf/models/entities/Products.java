@@ -1,8 +1,16 @@
 package com.osf.lojaosf.models.entities;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "products")
@@ -16,13 +24,13 @@ public class Products {
     private Double price;
 
     @ManyToOne
-    private Brands brands = new Brands();
+	private Brands brands = new Brands();
 
     @ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST)
-    private List<Categories> categories = new ArrayList<>();
+    private List<Category> categories = new ArrayList<Category>();
 
     @ManyToOne
-    private Stocks stock = new Stocks();
+    private Stocks stock;
 
 
     public Products() {
@@ -69,23 +77,24 @@ public class Products {
         this.price = price;
     }
 
-    public Brands getBrands() {
-        return brands;
-    }
 
-    public void setBrands(Brands brands) {
-        this.brands = brands;
-    }
+	public Brands getBrands() {
+		return brands;
+	}
 
-    public List<Categories> getCategories() {
-        return categories;
-    }
+	public void setBrands(Brands brands) {
+		this.brands = brands;
+	}
 
-    public void setCategories(List<Categories> categories) {
-        this.categories = categories;
-    }
+    public List<Category> getCategories() {
+		return categories;
+	}
 
-    public Stocks getStock() {
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
+
+	public Stocks getStock() {
         return stock;
     }
 

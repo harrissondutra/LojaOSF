@@ -1,8 +1,12 @@
 package com.osf.lojaosf.models.entities;
 
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "stocks")
@@ -15,7 +19,7 @@ public class Stocks {
     private List<Stores> storesList;
 
     @OneToMany
-    private List<Products> products = new ArrayList<Products>();
+    private List<Products> products;
 
 
     public Integer getId() {
