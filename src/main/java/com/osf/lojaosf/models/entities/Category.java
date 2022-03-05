@@ -1,8 +1,15 @@
 package com.osf.lojaosf.models.entities;
 
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "categories")
@@ -14,12 +21,8 @@ public class Category {
 
     private String name;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "product_categories",
-                joinColumns = @JoinColumn(name = "categories_id", referencedColumnName = "id"),
-                inverseJoinColumns = @JoinColumn(name = "products_id", referencedColumnName = "id")
-    )
-    private List<Products> products = new ArrayList<>();
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+	private List<Products> products;
 
     public Category() {
     }
@@ -44,11 +47,20 @@ public class Category {
         this.id = id;
     }
 
-    public List<Products> getProducts() {
-        return products;
-    }
+	public List<Products> getProducts() {
+		return products;
+	}
 
-    public void setProducts(List<Products> products) {
-        this.products = products;
-    }
+	
+
+	
+
+	
+    
+
+	
+    
+    
+
+   
 }

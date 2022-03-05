@@ -13,5 +13,6 @@ public interface CategoryRepository extends PagingAndSortingRepository<Category,
 
     @Query("SELECT c from Category c where c.name like %:name%")
     public Iterable<Category> searchByNameLike(@Param("name") String partName);
+    
 
 }
