@@ -48,4 +48,11 @@ public class Brand {
     public void setId(Integer id) {
         this.id = id;
     }
+
+	
+	public void setProductList(List<Product> productList) {
+		this.productList = productList;
+	}
+    
+    
 }

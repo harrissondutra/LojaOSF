@@ -22,8 +22,8 @@ public class Product {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Brand brand = new Brand();
 
-	@ManyToOne
-	private Category category;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Category category = new Category();
 
 	@ManyToOne
 	private Stock stock;
@@ -84,6 +84,10 @@ public class Product {
 
 	
 
+	public Category getCategory() {
+		return category;
+	}
+
 	public void setCategory(Category category) {
 		this.category = category;
 	}
@@ -94,6 +98,11 @@ public class Product {
 
 	public void setStock(Stock stock) {
 		this.stock = stock;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [name=" + name + "]";
 	}
 
 	
