@@ -14,22 +14,22 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "brands")
-public class Brands {
+public class Brand {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @OneToMany(mappedBy = "brands", fetch = FetchType.LAZY)
-	private List<Products> productsList  = new ArrayList<>();
+    @OneToMany(mappedBy = "brand", fetch = FetchType.LAZY)
+	private List<Product> productList = new ArrayList<>();
 
     private String name;
 
-    public Brands() {
+    public Brand() {
     }
 
-    public Brands(String name) {
+    public Brand(String name) {
         this.name = name;
     }
 

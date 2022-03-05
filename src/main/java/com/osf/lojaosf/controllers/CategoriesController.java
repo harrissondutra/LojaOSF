@@ -16,29 +16,29 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.osf.lojaosf.models.entities.Category;
-import com.osf.lojaosf.models.repositories.CategoryRepository;
+import com.osf.lojaosf.models.repositories.CategoriesRepository;
 
 @RestController
 @RequestMapping("/api/category")
-public class CategoryController {
+public class CategoriesController {
 
 	@Autowired
-	private CategoryRepository categoryRepository;
+	private CategoriesRepository categoriesRepository;
 
 	@RequestMapping(method = { RequestMethod.POST, RequestMethod.PUT })
 	public @ResponseBody Category saveCategory(@Valid Category category) {
-		categoryRepository.save(category);
+		categoriesRepository.save(category);
 		return category;
 	}
 
 	@GetMapping
 	public Iterable<Category> getAllProducts() {
-		return categoryRepository.findAll();
+		return categoriesRepository.findAll();
 	}
 
 	@GetMapping(path = "/name/{partName}")
 	public Iterable<Category> getCategoryByName(@PathVariable String partName) {
-		return categoryRepository.searchByNameLike(partName);
+		return categoriesRepository.searchByNameLike(partName);
 	}
 
 	@GetMapping("/page/{numberPage}/{qtdPage}")
@@ -48,17 +48,17 @@ public class CategoryController {
 		}
 
 		Pageable page = PageRequest.of(numberPage, 2);
-		return categoryRepository.findAll(page);
+		return categoriesRepository.findAll(page);
 
 	}
 
 	@GetMapping("/{id}")
 	public Optional<Category> getCategoryById(@PathVariable int id) {
-		return categoryRepository.findById(id);
+		return categoriesRepository.findById(id);
 	}
 
 	@DeleteMapping("/{id}")
 	public void deleteCategoryById(@PathVariable int id) {
-		categoryRepository.deleteById(id);
+		categoriesRepository.deleteById(id);
 	}
 }

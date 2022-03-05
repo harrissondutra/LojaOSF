@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "stores")
-public class Stores extends Address{
+public class Store extends Address{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -15,19 +15,19 @@ public class Stores extends Address{
     private String name;
 
     @ManyToOne
-    private Stocks stocks;
+    private Stock stock;
 
     @ManyToMany
-    private List<Products> productsList = new ArrayList<Products>();
+    private List<Product> productList = new ArrayList<Product>();
 
 
-    public Stores(String phone, String email, String street, String city, String state, String zip_code, String address, String name) {
+    public Store(String phone, String email, String street, String city, String state, String zip_code, String address, String name) {
         super(phone, email, street, city, state, zip_code);
         this.address = address;
         this.name = name;
     }
 
-    public Stores() {
+    public Store() {
     }
 
     public Integer getId() {
@@ -54,19 +54,19 @@ public class Stores extends Address{
         this.name = name;
     }
 
-    public Stocks getStocks() {
-        return stocks;
+    public Stock getStocks() {
+        return stock;
     }
 
-    public void setStocks(Stocks stocks) {
-        this.stocks = stocks;
+    public void setStocks(Stock stock) {
+        this.stock = stock;
     }
 
-    public List<Products> getProductsList() {
-        return productsList;
+    public List<Product> getProductsList() {
+        return productList;
     }
 
-    public void setProductsList(List<Products> productsList) {
-        this.productsList = productsList;
+    public void setProductsList(List<Product> productList) {
+        this.productList = productList;
     }
 }

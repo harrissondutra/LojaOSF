@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.osf.lojaosf.models.entities.Category;
 
-public interface CategoryRepository extends PagingAndSortingRepository<Category, Integer> {
+public interface CategoriesRepository extends PagingAndSortingRepository<Category, Integer> {
 
     public Iterable<Category> findByNameContainingIgnoreCase(String category);
 

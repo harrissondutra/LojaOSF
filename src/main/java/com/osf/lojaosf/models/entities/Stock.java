@@ -10,16 +10,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "stocks")
-public class Stocks {
+public class Stock {
     @Id
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @OneToMany(mappedBy = "stocks" )
-    private List<Stores> storesList;
+    @OneToMany(mappedBy = "stock")
+    private List<Store> storeList;
 
     @OneToMany
-    private List<Products> products;
+    private List<Product> products;
 
 
     public Integer getId() {
@@ -30,19 +30,19 @@ public class Stocks {
         this.id = id;
     }
 
-    public List<Stores> getStoresList() {
-        return storesList;
+    public List<Store> getStoresList() {
+        return storeList;
     }
 
-    public void setStoresList(List<Stores> storesList) {
-        this.storesList = storesList;
+    public void setStoresList(List<Store> storeList) {
+        this.storeList = storeList;
     }
 
-    public List<Products> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Products> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 }

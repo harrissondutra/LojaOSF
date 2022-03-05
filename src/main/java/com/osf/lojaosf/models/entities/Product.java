@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "products")
-public class Products {
+public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -20,25 +20,25 @@ public class Products {
 	private Double price;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Brands brands = new Brands();
+	private Brand brand = new Brand();
 
 	@ManyToOne
 	private Category category;
 
 	@ManyToOne
-	private Stocks stock;
+	private Stock stock;
 
-	public Products() {
+	public Product() {
 	}
 
-	public Products(String name) {
+	public Product(String name) {
 		this.name = name;
 	}
 
-	public Products(String name, Brands brands, Category category) {
+	public Product(String name, Brand brand, Category category) {
 		super();
 		this.name = name;
-		this.brands = brands;
+		this.brand = brand;
 		this.category = category;
 	}
 
@@ -74,12 +74,12 @@ public class Products {
 		this.price = price;
 	}
 
-	public Brands getBrands() {
-		return brands;
+	public Brand getBrands() {
+		return brand;
 	}
 
-	public void setBrands(Brands brands) {
-		this.brands = brands;
+	public void setBrands(Brand brand) {
+		this.brand = brand;
 	}
 
 	
@@ -88,11 +88,11 @@ public class Products {
 		this.category = category;
 	}
 
-	public Stocks getStock() {
+	public Stock getStock() {
 		return stock;
 	}
 
-	public void setStock(Stocks stock) {
+	public void setStock(Stock stock) {
 		this.stock = stock;
 	}
 

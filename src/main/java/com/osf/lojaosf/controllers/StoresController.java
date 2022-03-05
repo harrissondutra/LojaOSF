@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.osf.lojaosf.models.entities.Stores;
+import com.osf.lojaosf.models.entities.Store;
 import com.osf.lojaosf.models.repositories.StoreRepository;
 
 @RestController
@@ -26,28 +26,29 @@ public class StoresController {
     private StoreRepository storeRepository;
 
     @RequestMapping(method = { RequestMethod.POST, RequestMethod.PUT })
-    public @ResponseBody Stores saveStores(@Valid Stores stores) {
-        storeRepository.save(stores);
-        return stores;
+    public @ResponseBody
+    Store saveStores(@Valid Store store) {
+        storeRepository.save(store);
+        return store;
     }
 
     @GetMapping
-    public Iterable<Stores> getAllProducts() {
+    public Iterable<Store> getAllProducts() {
         return storeRepository.findAll();
     }
 
     @GetMapping(path = "/name/{partName}")
-    public Iterable<Stores> getStoresByName(@PathVariable String partName) {
+    public Iterable<Store> getStoresByName(@PathVariable String partName) {
         return storeRepository.searchByNameLike(partName);
     }
 
     @GetMapping(path = "/name/{Stores}")
-    public Iterable<Stores> getProductsByStore(@PathVariable String Stores) {
+    public Iterable<Store> getProductsByStore(@PathVariable String Stores) {
         return storeRepository.searchByNameStore(Stores);
     }
 
     @GetMapping("/page/{numberPage}/{qtdPage}")
-    public Iterable<Stores> getProductsPerPage(@PathVariable int numberPage, @PathVariable int qtdPage) {
+    public Iterable<Store> getProductsPerPage(@PathVariable int numberPage, @PathVariable int qtdPage) {
         if (qtdPage >= 5) {
             qtdPage = 5;
         }
@@ -58,7 +59,7 @@ public class StoresController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Stores> getProductsById(@PathVariable int id) {
+    public Optional<Store> getProductsById(@PathVariable int id) {
         return storeRepository.findById(id);
     }
 

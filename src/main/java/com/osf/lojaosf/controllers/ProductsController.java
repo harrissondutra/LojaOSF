@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.osf.lojaosf.models.entities.Brands;
-import com.osf.lojaosf.models.entities.Products;
-import com.osf.lojaosf.models.entities.Stores;
+import com.osf.lojaosf.models.entities.Brand;
+import com.osf.lojaosf.models.entities.Product;
+import com.osf.lojaosf.models.entities.Store;
 import com.osf.lojaosf.models.repositories.BrandsRepository;
 import com.osf.lojaosf.models.repositories.ProductsRepository;
 import com.osf.lojaosf.models.repositories.StoreRepository;
@@ -36,33 +36,34 @@ public class ProductsController {
 	private BrandsRepository brandsRepository;
 
 	@RequestMapping(method = { RequestMethod.POST, RequestMethod.PUT })
-	public @ResponseBody Products salvarProduto(@Valid Products produto) {
+	public @ResponseBody
+	Product salvarProduto(@Valid Product produto) {
 		productsRepository.save(produto);
 		return produto;
 	}
 
 	@GetMapping
-	public Iterable<Products> getAllProducts() {
+	public Iterable<Product> getAllProducts() {
 		return productsRepository.findAll();
 	}
 
 	@GetMapping(path = "/name/{partName}")
-	public Iterable<Products> getProductsByName(@PathVariable String partName) {
+	public Iterable<Product> getProductsByName(@PathVariable String partName) {
 		return productsRepository.searchByNameLike(partName);
 	}
 
 	@GetMapping(path = "/name/{Stores}")
-	public Iterable<Stores> getProductsByStore(@PathVariable String stores) {
+	public Iterable<Store> getProductsByStore(@PathVariable String stores) {
 		return storeRepository.searchByNameStore(stores);
 	}
 
 	@GetMapping(path = "/name/{Brands}")
-	public Iterable<Brands> getProductsByBrands(@PathVariable String brands) {
+	public Iterable<Brand> getProductsByBrands(@PathVariable String brands) {
 		return brandsRepository.searchByNameLike(brands);
 	}
 
 	@GetMapping("/page/{numberPage}/{qtdPage}")
-	public Iterable<Products> getProductsPerPage(@PathVariable int numberPage, @PathVariable int qtdPage) {
+	public Iterable<Product> getProductsPerPage(@PathVariable int numberPage, @PathVariable int qtdPage) {
 		if (qtdPage >= 5) {
 			qtdPage = 5;
 		}
@@ -73,7 +74,7 @@ public class ProductsController {
 	}
 
 	@GetMapping("/{id}")
-	public Optional<Products> getProductsById(@PathVariable int id) {
+	public Optional<Product> getProductsById(@PathVariable int id) {
 		return productsRepository.findById(id);
 	}
 

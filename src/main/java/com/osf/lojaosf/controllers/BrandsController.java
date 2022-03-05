@@ -1,6 +1,6 @@
 package com.osf.lojaosf.controllers;
 
-import com.osf.lojaosf.models.entities.Brands;
+import com.osf.lojaosf.models.entities.Brand;
 import com.osf.lojaosf.models.repositories.BrandsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -18,23 +18,24 @@ public class BrandsController {
     private BrandsRepository brandsRepository;
 
     @RequestMapping(method = { RequestMethod.POST, RequestMethod.PUT })
-    public @ResponseBody Brands saveBrands(@Valid Brands brands) {
-        brandsRepository.save(brands);
-        return brands;
+    public @ResponseBody
+    Brand saveBrands(@Valid Brand brand) {
+        brandsRepository.save(brand);
+        return brand;
     }
 
     @GetMapping
-    public Iterable<Brands> getAllProducts() {
+    public Iterable<Brand> getAllProducts() {
         return brandsRepository.findAll();
     }
 
     @GetMapping(path = "/name/{partName}")
-    public Iterable<Brands> getStoresByName(@PathVariable String partName) {
+    public Iterable<Brand> getStoresByName(@PathVariable String partName) {
         return brandsRepository.searchByNameLike(partName);
     }
 
     @GetMapping("/page/{numberPage}/{qtdPage}")
-    public Iterable<Brands> getProductsPerPage(@PathVariable int numberPage, @PathVariable int qtdPage) {
+    public Iterable<Brand> getProductsPerPage(@PathVariable int numberPage, @PathVariable int qtdPage) {
         if (qtdPage >= 5) {
             qtdPage = 5;
         }
@@ -45,7 +46,7 @@ public class BrandsController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Brands> getProductsById(@PathVariable int id) {
+    public Optional<Brand> getProductsById(@PathVariable int id) {
         return brandsRepository.findById(id);
     }
 

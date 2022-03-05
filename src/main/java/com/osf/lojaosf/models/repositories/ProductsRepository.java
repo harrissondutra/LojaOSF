@@ -5,14 +5,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.osf.lojaosf.models.entities.Products;
+import com.osf.lojaosf.models.entities.Product;
 
-public interface ProductsRepository extends PagingAndSortingRepository<Products, Integer> {
+public interface ProductsRepository extends PagingAndSortingRepository<Product, Integer> {
 
-	public Iterable<Products> findByNameContainingIgnoreCase(String products);
+	public Iterable<Product> findByNameContainingIgnoreCase(String products);
 	
-    @Query("SELECT p from Products p where p.name like %:name%")
-    Iterable<Products> searchByNameLike(@Param("name") String partName);
+    @Query("SELECT p from Product p where p.name like %:name%")
+    Iterable<Product> searchByNameLike(@Param("name") String partName);
 
 
 

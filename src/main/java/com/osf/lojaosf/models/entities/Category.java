@@ -22,7 +22,7 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-	private List<Products> products;
+	private List<Product> products;
 
     public Category() {
     }
@@ -47,7 +47,7 @@ public class Category {
         this.id = id;
     }
 
-	public List<Products> getProducts() {
+	public List<Product> getProducts() {
 		return products;
 	}
 
