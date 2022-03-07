@@ -1,12 +1,12 @@
 package com.osf.lojaosf.models.entities;
 
 import javax.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "categories")
+
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,9 +14,10 @@ public class Category {
     private Integer id;
 
     private String name;
+    
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-	private List<Product> productsList = new ArrayList<>();
+    @OneToMany(mappedBy = "category")
+	private List<Product> productsList = new ArrayList<Product>();
 
 
 
@@ -43,22 +44,13 @@ public class Category {
         this.id = id;
     }
 
-	public void setProductsList(List<Product> productsList) {
-		this.productsList = productsList;
-	}
 
-	
+    public List<Product> getProductsList() {
 
-	
+        return productsList;
+    }
 
-	
-
-	
-    
-
-	
-    
-    
-
-   
+    public void setProductsList(List<Product> productsList) {
+        this.productsList = productsList;
+    }
 }

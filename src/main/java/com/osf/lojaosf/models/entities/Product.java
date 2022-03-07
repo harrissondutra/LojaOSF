@@ -1,12 +1,6 @@
 package com.osf.lojaosf.models.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "products")
@@ -22,7 +16,7 @@ public class Product {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Brand brand = new Brand();
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne()
 	private Category category = new Category();
 
 	@ManyToOne
@@ -85,6 +79,7 @@ public class Product {
 	
 
 	public Category getCategory() {
+		category.setProductsList(null);
 		return category;
 	}
 
