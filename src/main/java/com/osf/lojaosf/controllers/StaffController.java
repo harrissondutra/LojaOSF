@@ -15,8 +15,9 @@ public class StaffController {
     @Autowired
     private StaffRepository staffRepository;
 
-    @RequestMapping(method = { RequestMethod.POST, RequestMethod.PUT })
-    public @ResponseBody Staff saveStaff(@Valid Staff staff) {
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})
+    public @ResponseBody
+    Staff saveStaff(@Valid Staff staff) {
         staffRepository.save(staff);
         return staff;
     }
@@ -26,13 +27,11 @@ public class StaffController {
         return staffRepository.findAll();
     }
 
-   
 
     @GetMapping("/{id}")
     public Optional<Staff> getStaffById(@PathVariable int id) {
         return staffRepository.findById(id);
     }
-
 
 
     @DeleteMapping("/{id}")

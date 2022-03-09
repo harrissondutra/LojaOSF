@@ -12,21 +12,20 @@ public class Staff {
 
     @Column(name = "name", nullable = false)
     private String firstName;
-    
+
     @Column(nullable = false)
     private String lastName;
-    
+
     @Column(name = "email", nullable = false)
     private String email;
     private String phone;
-
     private boolean active;
 
     @ManyToOne
     private Store store;
 
-   @ManyToOne
-   private Staff manager;
+    @ManyToOne
+    private Staff manager;
 
 
     public Staff() {
@@ -88,12 +87,7 @@ public class Staff {
     }
 
     public boolean isActive() {
-        if(active == true){
-        return true;
-        }else {
-
-            return false;
-        }
+        return active == true;
     }
 
     public void setActive(boolean active) {

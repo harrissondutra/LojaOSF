@@ -9,9 +9,9 @@ import org.springframework.data.repository.query.Param;
 
 public interface BrandsRepository extends PagingAndSortingRepository<Brand, Integer> {
 
-    public Iterable<Brand> findByNameContainingIgnoreCase(String brands);
+    Iterable<Brand> findByNameContainingIgnoreCase(String brands);
 
     @Query("SELECT b from Brand b where b.name like %:name%")
-    public Iterable<Brand> searchByNameLike(@Param("name") String partName);
+    Iterable<Brand> searchByNameLike(@Param("name") String partName);
 
 }

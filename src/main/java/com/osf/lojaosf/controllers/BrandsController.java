@@ -17,8 +17,9 @@ public class BrandsController {
     @Autowired
     private BrandsRepository brandsRepository;
 
-    @RequestMapping(method = { RequestMethod.POST, RequestMethod.PUT })
-    public @ResponseBody Brand saveBrands(@Valid Brand brand) {
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})
+    public @ResponseBody
+    Brand saveBrands(@Valid Brand brand) {
         brandsRepository.save(brand);
         return brand;
     }
@@ -48,7 +49,6 @@ public class BrandsController {
     public Optional<Brand> getProductsById(@PathVariable int id) {
         return brandsRepository.findById(id);
     }
-
 
 
     @DeleteMapping("/{id}")
