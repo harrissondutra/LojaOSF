@@ -18,8 +18,7 @@ public class BrandsController {
     private BrandsRepository brandsRepository;
 
     @RequestMapping(method = { RequestMethod.POST, RequestMethod.PUT })
-    public @ResponseBody
-    Brand saveBrands(@Valid Brand brand) {
+    public @ResponseBody Brand saveBrands(@Valid Brand brand) {
         brandsRepository.save(brand);
         return brand;
     }
