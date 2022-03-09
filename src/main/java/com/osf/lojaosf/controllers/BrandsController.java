@@ -25,17 +25,17 @@ public class BrandsController {
     }
 
     @GetMapping
-    public Iterable<Brand> getAllProducts() {
+    public Iterable<Brand> getAllBrands() {
         return brandsRepository.findAll();
     }
 
     @GetMapping(path = "/name/{partName}")
-    public Iterable<Brand> getStoresByName(@PathVariable String partName) {
+    public Iterable<Brand> getBrandsByName(@PathVariable String partName) {
         return brandsRepository.searchByNameLike(partName);
     }
 
     @GetMapping("/page/{numberPage}/{qtdPage}")
-    public Iterable<Brand> getProductsPerPage(@PathVariable int numberPage, @PathVariable int qtdPage) {
+    public Iterable<Brand> getBrandsPerPage(@PathVariable int numberPage, @PathVariable int qtdPage) {
         if (qtdPage >= 5) {
             qtdPage = 5;
         }
@@ -46,13 +46,13 @@ public class BrandsController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Brand> getProductsById(@PathVariable int id) {
+    public Optional<Brand> getBrandsById(@PathVariable int id) {
         return brandsRepository.findById(id);
     }
 
 
     @DeleteMapping("/{id}")
-    public void deleteProductsById(@PathVariable int id) {
+    public void deleteBrandsById(@PathVariable int id) {
         brandsRepository.deleteById(id);
     }
 }

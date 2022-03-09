@@ -1,5 +1,8 @@
 package com.osf.lojaosf.models.entities;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class Address {
 
     private String phone;

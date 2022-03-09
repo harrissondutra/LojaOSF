@@ -11,7 +11,7 @@ public class Store extends Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
-    private String address;
+
     private String name;
 
     @ManyToOne
@@ -23,14 +23,11 @@ public class Store extends Address {
     @ManyToMany
     private List<Product> productList = new ArrayList<Product>();
 
-    public Store(String phone, String email, String street, String city, String state, String zip_code, String address,
-                 String name) {
-        super(phone, email, street, city, state, zip_code);
-        this.address = address;
-        this.name = name;
+    public Store() {
     }
 
-    public Store() {
+    public Store(String name) {
+        this.name = name;
     }
 
     public Integer getId() {
@@ -39,14 +36,6 @@ public class Store extends Address {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getName() {
