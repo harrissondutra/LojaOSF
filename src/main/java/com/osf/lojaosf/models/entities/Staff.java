@@ -20,8 +20,7 @@ public class Staff {
     private String email;
     private String phone;
 
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    private boolean active;
 
     @ManyToOne
     private Store store;
@@ -39,14 +38,6 @@ public class Staff {
         this.email = email;
     }
 
-    public Staff(String firstName, String lastName, String email, String phone, Status status, Store store) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.status = status;
-        this.store = store;
-    }
 
     public Integer getId() {
         return id;
@@ -88,19 +79,32 @@ public class Staff {
         this.phone = phone;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
     public Store getStore() {
         return store;
     }
 
     public void setStore(Store store) {
         this.store = store;
+    }
+
+    public boolean isActive() {
+        if(active == true){
+        return true;
+        }else {
+
+            return false;
+        }
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Staff getManager() {
+        return manager;
+    }
+
+    public void setManager(Staff manager) {
+        this.manager = manager;
     }
 }
