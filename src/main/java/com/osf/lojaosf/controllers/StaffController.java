@@ -15,24 +15,34 @@ public class StaffController {
     @Autowired
     private StaffRepository staffRepository;
 
-    @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})
-    public @ResponseBody
-    Staff saveStaff(@Valid Staff staff) {
-        staffRepository.save(staff);
-        return staff;
-    }
 
     @GetMapping
     public Iterable<Staff> getAllStaff() {
         return staffRepository.findAll();
     }
 
+    @GetMapping(path = "/name/{partName}")
+    public Iterable<Staff> getStaffByName(@PathVariable String partName) {
+        return staffRepository.searchByNameLike(partName);
+    }
 
     @GetMapping("/{id}")
     public Optional<Staff> getStaffById(@PathVariable int id) {
         return staffRepository.findById(id);
     }
 
+    @PostMapping
+    public @ResponseBody
+    Staff saveStaff(@Valid Staff staff) {
+        staffRepository.save(staff);
+        return staff;
+    }
+
+    @PutMapping
+    public Staff changeStaff(@Valid Staff staff){
+        staffRepository.save(staff);
+        return staff;
+    }
 
     @DeleteMapping("/{id}")
     public void deleteStaffById(@PathVariable int id) {

@@ -17,13 +17,6 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
 
-    @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})
-    public @ResponseBody
-    Customer saveCustomers(@Valid Customer Customer) {
-        customerRepository.save(Customer);
-        return Customer;
-    }
-
     @GetMapping
     public Iterable<Customer> getAllCustomers() {
         return customerRepository.findAll();
@@ -39,10 +32,8 @@ public class CustomerController {
         if (qtdPage >= 5) {
             qtdPage = 5;
         }
-
         Pageable page = PageRequest.of(numberPage, 2);
         return customerRepository.findAll(page);
-
     }
 
     @GetMapping("/{id}")
@@ -50,6 +41,18 @@ public class CustomerController {
         return customerRepository.findById(id);
     }
 
+    @PostMapping
+    public @ResponseBody
+    Customer saveCustomers(@Valid Customer Customer) {
+        customerRepository.save(Customer);
+        return Customer;
+    }
+
+    @PutMapping
+    public Customer changeCustomer(@Valid Customer customer){
+        customerRepository.save(customer);
+        return customer;
+    }
 
     @DeleteMapping("/{id}")
     public void deleteCustomersById(@PathVariable int id) {

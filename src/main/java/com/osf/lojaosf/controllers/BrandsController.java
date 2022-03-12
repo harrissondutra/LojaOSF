@@ -17,13 +17,6 @@ public class BrandsController {
     @Autowired
     private BrandsRepository brandsRepository;
 
-    @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})
-    public @ResponseBody
-    Brand saveBrands(@Valid Brand brand) {
-        brandsRepository.save(brand);
-        return brand;
-    }
-
     @GetMapping
     public Iterable<Brand> getAllBrands() {
         return brandsRepository.findAll();
@@ -39,10 +32,8 @@ public class BrandsController {
         if (qtdPage >= 5) {
             qtdPage = 5;
         }
-
         Pageable page = PageRequest.of(numberPage, 2);
         return brandsRepository.findAll(page);
-
     }
 
     @GetMapping("/{id}")
@@ -50,6 +41,18 @@ public class BrandsController {
         return brandsRepository.findById(id);
     }
 
+    @PostMapping
+    public @ResponseBody
+    Brand saveBrands(@Valid Brand brand) {
+        brandsRepository.save(brand);
+        return brand;
+    }
+
+    @PutMapping
+    public Brand changeBrands(@Valid Brand brand){
+        brandsRepository.save(brand);
+        return brand;
+    }
 
     @DeleteMapping("/{id}")
     public void deleteBrandsById(@PathVariable int id) {

@@ -17,12 +17,6 @@ public class CategoriesController {
 	@Autowired
 	private CategoriesRepository categoriesRepository;
 
-	@RequestMapping(method = { RequestMethod.POST, RequestMethod.PUT })
-	public @ResponseBody Category saveCategory(@Valid Category category) {
-		categoriesRepository.save(category);
-		return category;
-	}
-
 	@GetMapping
 	public Iterable<Category> getAllProducts() {
 		return categoriesRepository.findAll();
@@ -33,21 +27,30 @@ public class CategoriesController {
 		return categoriesRepository.searchByNameLike(partName);
 	}
 
-
 	@GetMapping("/page/{numberPage}/{qtdPage}")
 	public Iterable<Category> getCategoryPerPage(@PathVariable int numberPage, @PathVariable int qtdPage) {
 		if (qtdPage >= 5) {
 			qtdPage = 5;
 		}
-
 		Pageable page = PageRequest.of(numberPage, 2);
 		return categoriesRepository.findAll(page);
-
 	}
 
 	@GetMapping("/{id}")
 	public Optional<Category> getCategoryById(@PathVariable int id) {
 		return categoriesRepository.findById(id);
+	}
+
+	@PostMapping
+	public @ResponseBody Category saveCategory(@Valid Category category) {
+		categoriesRepository.save(category);
+		return category;
+	}
+
+	@PutMapping
+	public Category changeCategory(@Valid Category category){
+		categoriesRepository.save(category);
+		return category;
 	}
 
 	@DeleteMapping("/{id}")

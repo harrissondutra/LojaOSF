@@ -1,5 +1,7 @@
 package com.osf.lojaosf.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +19,7 @@ public class Product {
 	private Brand brand = new Brand();
 
 	@ManyToOne()
+	@JsonIgnoreProperties("productsList")
 	private Category category = new Category();
 
 	@ManyToOne
@@ -79,7 +82,6 @@ public class Product {
 	
 
 	public Category getCategory() {
-		category.setProductsList(null);
 		return category;
 	}
 

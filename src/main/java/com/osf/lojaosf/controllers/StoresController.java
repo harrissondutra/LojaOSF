@@ -17,12 +17,6 @@ public class StoresController {
     @Autowired
     private StoreRepository storeRepository;
 
-    @RequestMapping(method = { RequestMethod.POST, RequestMethod.PUT })
-    public @ResponseBody
-    Store saveStores(@Valid Store store) {
-        storeRepository.save(store);
-        return store;
-    }
 
     @GetMapping
     public Iterable<Store> getAllStores() {
@@ -44,10 +38,8 @@ public class StoresController {
         if (qtdPage >= 5) {
             qtdPage = 5;
         }
-
         Pageable page = PageRequest.of(numberPage, 2);
         return storeRepository.findAll(page);
-
     }
 
     @GetMapping("/{id}")
@@ -55,7 +47,18 @@ public class StoresController {
         return storeRepository.findById(id);
     }
 
+    @PostMapping
+    public @ResponseBody
+    Store saveStores(@Valid Store store) {
+        storeRepository.save(store);
+        return store;
+    }
 
+    @PutMapping
+    public Store changeStores(@Valid Store store){
+        storeRepository.save(store);
+        return store;
+    }
 
     @DeleteMapping("/{id}")
     public void deleteStoresById(@PathVariable int id) {
