@@ -17,12 +17,13 @@ public class Stock {
     private List<Product> products;
 
     public Stock() {
-    }
-
-    public Stock(List<Product> products) {
         if(products.isEmpty()){
             throw new IllegalArgumentException("Product is necessary");
         }
+    }
+
+    public Stock(List<Product> products) {
+
         this.products = products;
     }
 
