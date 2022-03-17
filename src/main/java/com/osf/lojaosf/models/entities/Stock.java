@@ -1,12 +1,7 @@
 package com.osf.lojaosf.models.entities;
 
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "stocks")
@@ -21,6 +16,15 @@ public class Stock {
     @OneToMany
     private List<Product> products;
 
+    public Stock() {
+    }
+
+    public Stock(List<Product> products) {
+        if(products.isEmpty()){
+            throw new IllegalArgumentException("Product necessary");
+        }
+        this.products = products;
+    }
 
     public Integer getId() {
         return id;

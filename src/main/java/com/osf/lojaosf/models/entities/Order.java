@@ -29,10 +29,17 @@ public class Order {
 
 
     public Order() {
+        
     }
 
-    public Order(Customer customer) {
+    public Order(Customer customer, Store store) {
+        StatusOrder awaiting_shipment = StatusOrder.Awaiting_Shipment;
+       Stock stockStore = store.getStock();
+       if (stockStore.equals(0)){
+            throw new IllegalStateException("No Stock in Store");
+       }
         this.customer = customer;
+        this.store = store;
     }
 
     public Integer getId() {
