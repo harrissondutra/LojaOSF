@@ -20,11 +20,6 @@ public class Stock {
     public Stock() {
     }
 
-//    public Stock(List<Product> products) {
-//
-//        this.products = products;
-//    }
-
     public Integer getId() {
         return id;
     }

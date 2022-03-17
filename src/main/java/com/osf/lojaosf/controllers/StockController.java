@@ -43,7 +43,7 @@ public class StockController {
     Stock saveStocks(@Valid Stock stock) {
         Product product = new Product();
         if(product.getId() == null){
-            throw new IllegalArgumentException("Is Necessary a product to create one Stock");
+            throw new IllegalArgumentException("Is Necessary one product to create a Stock");
         }
         stockRepository.save(stock);
         return stock;
