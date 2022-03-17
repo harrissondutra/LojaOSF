@@ -23,7 +23,6 @@ public class Stock {
     }
 
     public Stock(List<Product> products) {
-
         this.products = products;
     }
 
