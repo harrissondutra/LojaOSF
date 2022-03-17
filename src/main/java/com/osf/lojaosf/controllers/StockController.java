@@ -1,5 +1,6 @@
 package com.osf.lojaosf.controllers;
 
+import com.osf.lojaosf.models.entities.Product;
 import com.osf.lojaosf.models.entities.Stock;
 import com.osf.lojaosf.models.repositories.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,10 @@ public class StockController {
     @PostMapping
     public @ResponseBody
     Stock saveStocks(@Valid Stock stock) {
+        Product product = new Product();
+        if(product.getId() == null){
+            throw new IllegalArgumentException("Is Necessary a product to create one Stock");
+        }
         stockRepository.save(stock);
         return stock;
     }

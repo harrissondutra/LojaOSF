@@ -8,6 +8,7 @@ import java.util.List;
 public class Stock {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
     @OneToMany(mappedBy = "stock")
@@ -17,14 +18,12 @@ public class Stock {
     private List<Product> products;
 
     public Stock() {
-        if(products.isEmpty()){
-            throw new IllegalArgumentException("Product is necessary");
-        }
     }
 
-    public Stock(List<Product> products) {
-        this.products = products;
-    }
+//    public Stock(List<Product> products) {
+//
+//        this.products = products;
+//    }
 
     public Integer getId() {
         return id;
