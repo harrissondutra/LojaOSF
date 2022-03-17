@@ -21,7 +21,7 @@ public class Stock {
 
     public Stock(List<Product> products) {
         if(products.isEmpty()){
-            throw new IllegalArgumentException("Product necessary");
+            throw new IllegalArgumentException("Product is necessary");
         }
         this.products = products;
     }
