@@ -1,6 +1,7 @@
 package com.osf.lojaosf.models.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class Store extends Address {
     private String name;
 
     @ManyToOne
+    @NotNull
     private Stock stock;
 
     @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
@@ -22,6 +24,9 @@ public class Store extends Address {
 
     @ManyToMany
     private List<Product> productList = new ArrayList<Product>();
+
+    @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
+    private List<Order> orders = new ArrayList<Order>();
 
     public Store() {
     }
@@ -61,4 +66,33 @@ public class Store extends Address {
     public void setProductsList(List<Product> productList) {
         this.productList = productList;
     }
+
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+
+    public List<Staff> getStaff() {
+        return staff;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
 }

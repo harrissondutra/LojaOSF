@@ -1,6 +1,8 @@
 package com.osf.lojaosf.models.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "customer")
@@ -13,7 +15,8 @@ public class Customer extends Address{
     private String firstName;
     private String lastName;
 
-
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orders = new ArrayList<Order>();
 
     public Customer() {
     }
@@ -55,5 +58,12 @@ public class Customer extends Address{
         this.lastName = lastName;
     }
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 
 }

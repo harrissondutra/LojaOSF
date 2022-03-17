@@ -1,6 +1,8 @@
 package com.osf.lojaosf.models.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "staff")
@@ -26,6 +28,9 @@ public class Staff {
 
     @ManyToOne
     private Staff manager;
+
+    @OneToMany(mappedBy = "staff")
+    private List<Order> orders = new ArrayList<Order>();
 
 
     public Staff() {
@@ -101,4 +106,13 @@ public class Staff {
     public void setManager(Staff manager) {
         this.manager = manager;
     }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
 }
