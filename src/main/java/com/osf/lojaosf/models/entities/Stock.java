@@ -20,6 +20,14 @@ public class Stock {
     public Stock() {
     }
 
+    public static Product checkProductStock() {
+        Product product = new Product();
+        if(product.getId() == null){
+            throw new IllegalArgumentException("Is necessary one product to create a Stock");
+        }
+        return product;
+    }
+
     public Integer getId() {
         return id;
     }
