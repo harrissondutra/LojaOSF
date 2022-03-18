@@ -1,7 +1,8 @@
 package com.osf.lojaosf.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,11 +13,11 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
+    private String name;
 
     @OneToMany(mappedBy = "brand", fetch = FetchType.LAZY)
-    private List<Product> productList = new ArrayList<>();
-
-    private String name;
+    @JsonIgnoreProperties("brand")
+    private List<Product> productList;
 
     public Brand() {
     }
@@ -41,6 +42,9 @@ public class Brand {
         this.id = id;
     }
 
+    public List<Product> getProductList() {
+        return productList;
+    }
 
     public void setProductList(List<Product> productList) {
         this.productList = productList;

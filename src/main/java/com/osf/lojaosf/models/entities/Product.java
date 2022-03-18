@@ -16,11 +16,11 @@ public class Product {
 	private Double price;
 
 	@ManyToOne
-	private Brand brand = new Brand();
+	@JsonIgnoreProperties("productList")
+	private Brand brand;
 
-	@ManyToOne()
-	@JsonIgnoreProperties("productsList")
-	private Category category = new Category();
+	@ManyToOne
+	private Category category;
 
 	@ManyToOne
 	private Stock stock;
@@ -65,15 +65,13 @@ public class Product {
 		this.price = price;
 	}
 
-	public Brand getBrands() {
+	public Brand getBrand() {
 		return brand;
 	}
 
-	public void setBrands(Brand brand) {
+	public void setBrand(Brand brand) {
 		this.brand = brand;
 	}
-
-	
 
 	public Category getCategory() {
 		return category;
