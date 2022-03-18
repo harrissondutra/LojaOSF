@@ -15,7 +15,7 @@ public class Order {
     private Customer customer;
 
     @Enumerated
-    private StatusOrder statusOrder;
+    private StatusOrder statusOrder = StatusOrder.Awaiting_Shipment;
 
     private LocalDate orderDate;
     private LocalDate requiredDate;
@@ -33,7 +33,6 @@ public class Order {
     }
 
     public Order(Customer customer, Store store) {
-        StatusOrder awaiting_shipment = StatusOrder.Awaiting_Shipment;
        Stock stockStore = store.getStock();
        if (stockStore.equals(0)){
             throw new IllegalStateException("No Stock in Store");
