@@ -40,7 +40,7 @@ public class StockController {
     @PostMapping
     public @ResponseBody
     Stock saveStocks(@Valid Stock stock) {
-        Stock.checkProductStock();
+        stock.checkProductStock();
         stockRepository.save(stock);
         return stock;
     }

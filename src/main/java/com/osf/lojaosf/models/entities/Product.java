@@ -15,7 +15,7 @@ public class Product {
 	private int model_year;
 	private Double price;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private Brand brand = new Brand();
 
 	@ManyToOne()
@@ -32,12 +32,6 @@ public class Product {
 		this.name = name;
 	}
 
-	public Product(String name, Brand brand, Category category) {
-		super();
-		this.name = name;
-		this.brand = brand;
-		this.category = category;
-	}
 
 	public Integer getId() {
 		return id;

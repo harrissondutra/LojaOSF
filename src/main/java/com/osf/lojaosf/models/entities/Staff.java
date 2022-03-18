@@ -36,12 +36,10 @@ public class Staff {
     public Staff() {
     }
 
-    public Staff(String firstName, String lastName, String email) {
+    public Staff(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
     }
-
 
     public Integer getId() {
         return id;
