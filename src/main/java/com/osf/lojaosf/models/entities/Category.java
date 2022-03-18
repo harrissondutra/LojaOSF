@@ -14,12 +14,9 @@ public class Category {
     private Integer id;
 
     private String name;
-    
 
     @OneToMany(mappedBy = "category")
 	private List<Product> productsList = new ArrayList<Product>();
-
-
 
     public Category() {
     }
@@ -44,9 +41,7 @@ public class Category {
         this.id = id;
     }
 
-
     public List<Product> getProductsList() {
-
         return productsList;
     }
 
