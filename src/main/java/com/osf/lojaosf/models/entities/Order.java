@@ -33,8 +33,8 @@ public class Order {
     }
 
     public Order(Customer customer, Store store) {
-       Stock stockStore = store.getStock();
-       if (stockStore.equals(0)){
+       Integer stockStore = store.getStock().getId();
+       if (stockStore == null) {
             throw new IllegalStateException("No Stock in Store");
        }
         this.customer = customer;
