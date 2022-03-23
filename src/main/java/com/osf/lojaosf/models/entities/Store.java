@@ -31,6 +31,13 @@ public class Store extends Address {
     public Store() {
     }
 
+    public boolean changeStockStore(Staff staff, Store store){
+        if (staff.isManager()){
+            store.setStock(stock);
+        }
+        return false;
+    }
+
     public Store(String name) {
         this.name = name;
     }

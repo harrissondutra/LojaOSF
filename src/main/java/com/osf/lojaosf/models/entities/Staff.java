@@ -26,8 +26,7 @@ public class Staff {
     @ManyToOne
     private Store store;
 
-    @ManyToOne
-    private Staff manager;
+    private boolean manager;
 
     @OneToMany(mappedBy = "staff")
     private List<Order> orders = new ArrayList<Order>();
@@ -36,9 +35,10 @@ public class Staff {
     public Staff() {
     }
 
-    public Staff(String firstName, String lastName) {
+    public Staff(String firstName, String lastName, boolean manager) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.manager = manager;
     }
 
     public Integer getId() {
@@ -97,13 +97,7 @@ public class Staff {
         this.active = active;
     }
 
-    public Staff getManager() {
-        return manager;
-    }
 
-    public void setManager(Staff manager) {
-        this.manager = manager;
-    }
 
     public List<Order> getOrders() {
         return orders;
@@ -113,4 +107,11 @@ public class Staff {
         this.orders = orders;
     }
 
+    public boolean isManager() {
+        return manager;
+    }
+
+    public void setManager(boolean manager) {
+        this.manager = manager;
+    }
 }
