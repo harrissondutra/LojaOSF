@@ -2,6 +2,7 @@ package com.osf.lojaosf.controllers;
 
 import com.osf.lojaosf.models.entities.Order;
 import com.osf.lojaosf.models.entities.StatusOrder;
+import com.osf.lojaosf.models.entities.Stock;
 import com.osf.lojaosf.models.repositories.OrderRepository;
 import com.osf.lojaosf.models.repositories.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class OrderController {
 
     @PostMapping("/ChangeStatus")
     public @ResponseBody
-    StatusOrder ChangeStatusOrder(@Valid int id, Order order) {
+    Stock ChangeStatusOrder(@Valid int id, Order order) {
 
             switch (id) {
                 case 1:
@@ -61,13 +62,10 @@ public class OrderController {
                     order.setStatusOrder(StatusOrder.Delivered);
                 case 4:
                     order.setStatusOrder(StatusOrder.Canceled);
+                    return order.getStore().getStocks();
             }
 
-            if (id == 4){
-                stockRepository.findAll().toString();
-            }
-
-            return order.getStatusOrder();
+           return Stock.checkProductStock().getStock();
     }
 
 
