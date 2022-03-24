@@ -49,7 +49,7 @@ public class OrderController {
         return order;
     }
 
-    @PostMapping("/ChangeStatus")
+    @PostMapping("/changeStatus")
     public @ResponseBody
     Stock ChangeStatusOrder(@Valid int id, Order order) {
 

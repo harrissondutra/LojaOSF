@@ -9,11 +9,6 @@ import com.osf.lojaosf.models.entities.Category;
 
 public interface CategoriesRepository extends PagingAndSortingRepository<Category, Integer> {
 
-    public Iterable<Category> findByNameContainingIgnoreCase(String category);
-
     @Query("SELECT c from Category c where c.name like %:name%")
     public Iterable<Category> searchByNameLike(@Param("name") String partName);
-
-    
-
 }

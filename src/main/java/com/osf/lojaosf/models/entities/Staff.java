@@ -29,16 +29,10 @@ public class Staff {
     private boolean manager;
 
     @OneToMany(mappedBy = "staff")
-    private List<Order> orders = new ArrayList<Order>();
+    private List<Order> orders = new ArrayList<>();
 
 
     public Staff() {
-    }
-
-    public Staff(String firstName, String lastName, boolean manager) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.manager = manager;
     }
 
     public Integer getId() {

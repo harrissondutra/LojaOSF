@@ -16,10 +16,11 @@ public class Product {
 	private Double price;
 
 	@ManyToOne
-	@JsonIgnoreProperties("productList")
+	@JsonIgnoreProperties("productsList")
 	private Brand brand;
 
 	@ManyToOne
+	@JsonIgnoreProperties("productsList")
 	private Category category;
 
 	@ManyToOne
