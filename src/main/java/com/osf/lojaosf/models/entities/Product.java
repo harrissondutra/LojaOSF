@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
+/**
+ * Entidade de cadastro de produtos
+ */
 @Entity
 @Table(name = "products")
 public class Product {
@@ -16,7 +19,6 @@ public class Product {
 	private Double price;
 
 	@ManyToOne
-	@JsonIgnoreProperties("productsList")
 	private Brand brand;
 
 	@ManyToOne
@@ -24,7 +26,13 @@ public class Product {
 	private Category category;
 
 	@ManyToOne
+	@JoinColumn(referencedColumnName = "id")
+	@JsonIgnoreProperties("productsList")
 	private Stock stock;
+
+	@ManyToOne
+	@JoinColumn(referencedColumnName = "id")
+	private Store store;
 
 	public Product() {
 	}
@@ -88,11 +96,11 @@ public class Product {
 		this.stock = stock;
 	}
 
-	@Override
-	public String toString() {
-		return "Product [name=" + name + "]";
+	public Store getStore() {
+		return store;
 	}
 
-
-
+	public void setStore(Store store) {
+		this.store = store;
+	}
 }

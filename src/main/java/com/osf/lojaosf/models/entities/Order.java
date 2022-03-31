@@ -3,6 +3,9 @@ package com.osf.lojaosf.models.entities;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+/**
+ * Entidade de cadastro de vendas
+ */
 @Entity
 public class Order {
     @Id

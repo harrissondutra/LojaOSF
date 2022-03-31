@@ -2,6 +2,11 @@ package com.osf.lojaosf.models.entities;
 
 import javax.persistence.MappedSuperclass;
 
+/**
+ *  @author Harrisson Dutra
+ *
+ *  Classe que irá representar os endereços de lojas e de colaboradores
+ */
 @MappedSuperclass
 public class Address {
 

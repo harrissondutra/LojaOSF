@@ -2,7 +2,6 @@ package com.osf.lojaosf.controllers;
 
 import com.osf.lojaosf.models.entities.Order;
 import com.osf.lojaosf.models.entities.StatusOrder;
-import com.osf.lojaosf.models.entities.Stock;
 import com.osf.lojaosf.models.repositories.OrderRepository;
 import com.osf.lojaosf.models.repositories.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Optional;
 
+/**
+ * Controller das compras
+ */
 @RestController
 @RequestMapping("/api/orders")
 public class OrderController {
@@ -51,7 +53,7 @@ public class OrderController {
 
     @PostMapping("/changeStatus")
     public @ResponseBody
-    Stock ChangeStatusOrder(@Valid int id, Order order) {
+    void ChangeStatusOrder(@Valid int id, Order order) {
 
             switch (id) {
                 case 1:
@@ -62,10 +64,10 @@ public class OrderController {
                     order.setStatusOrder(StatusOrder.Delivered);
                 case 4:
                     order.setStatusOrder(StatusOrder.Canceled);
-                    return order.getStore().getStocks();
+                    order.getStore().getStock();
             }
 
-           return Stock.checkProductStock().getStock();
+
     }
 
 

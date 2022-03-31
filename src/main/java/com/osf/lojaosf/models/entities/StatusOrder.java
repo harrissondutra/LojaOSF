@@ -1,5 +1,9 @@
 package com.osf.lojaosf.models.entities;
 
+/**
+ * Enum para caracterizar o status da compra
+ */
+
 public enum StatusOrder {
     Awaiting_Shipment(1, "Awaiting_Shipment"),
     In_Transit(2, "Transit"),

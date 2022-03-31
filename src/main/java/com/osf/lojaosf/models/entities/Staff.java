@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Entidade de cadastro do Staff
+ */
 @Entity
 @Table(name = "staff")
 public class Staff {

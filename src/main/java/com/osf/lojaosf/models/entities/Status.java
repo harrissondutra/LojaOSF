@@ -1,5 +1,6 @@
 package com.osf.lojaosf.models.entities;
 
+
 public enum Status {
     Active(1, "Active"), Inactive(2, "Inactive");
 

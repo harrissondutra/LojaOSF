@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Entidade de cadastro de consumidores
+ */
 @Entity
 @Table(name = "customer")
 public class Customer extends Address{

@@ -1,8 +1,14 @@
 package com.osf.lojaosf.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Entidade de cadastro de estoque
+ */
 @Entity
 @Table(name = "stocks")
 public class Stock {
@@ -10,12 +16,15 @@ public class Stock {
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
+    private String codigo;
 
-    @OneToMany(mappedBy = "stock")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "stock")
+    @JsonIgnoreProperties("stock")
     private List<Store> storeList;
 
-    @OneToMany
-    private List<Product> products;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "stock")
+    @JsonIgnore
+    private List<Product> productsList;
 
     public Stock() {
     }
@@ -36,19 +45,27 @@ public class Stock {
         this.id = id;
     }
 
-    public List<Store> getStoresList() {
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public List<Store> getStoreList() {
         return storeList;
     }
 
-    public void setStoresList(List<Store> storeList) {
+    public void setStoreList(List<Store> storeList) {
         this.storeList = storeList;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<Product> getProductsList() {
+        return productsList;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setProductsList(List<Product> productsList) {
+        this.productsList = productsList;
     }
 }
